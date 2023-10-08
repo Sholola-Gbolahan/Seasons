@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
+// import { Clock, UserForm } from "./Exersice";
 
 // class 
 class App extends React.Component {
@@ -18,8 +20,7 @@ class App extends React.Component {
     );
   }
 
-  render() {
-    
+  renderContent(){
     if(this.state.errorMessage){
       return <div><p>Error:{this.state.errorMessage}</p></div>;
     }
@@ -28,10 +29,17 @@ class App extends React.Component {
       return  <div> <SeasonDisplay lat= {this.state.lat} log = {this.state.log} /> </div>
     }
   
-            return <div> <p>Loading......</p></div>;
+       return <div> <Loader  message="Please accept location request"/> </div>;
+  }
 
-    
-  } 
+  render() {
+    return (
+      <div className="season-border">
+        {this.renderContent()}
+        <Clock />
+      </div>
+    )
+        }  
 }
 
 ReactDOM.render(<App />, document.querySelector("#root"));

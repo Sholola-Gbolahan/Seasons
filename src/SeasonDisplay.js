@@ -2,6 +2,7 @@ import React from "react";
 import { BsSnow2, BsFillSunFill } from "react-icons/bs";
 import './SeasonDisplay.css'
 
+
 const seasonConfig = {
   summer: {
     text: "It's Really Hot Here",
@@ -19,7 +20,7 @@ const getSeason = (lat, month) => {
     // --------------------------------------------------------------------------------------------------- //
     // This is a javascript ternary expression
     return lat > 0 ? "summer" : "winter";
-    // This expression is saying if lat is > 0 is should return summer and if it's less than o is should return 'winter'
+    // This expression is saying if lat is > 0 is should return summer and if it's less than 0 is should return 'winter'
     //  If we are in the summer month and we are in the Northan atmoshere return summer other wise return winter
 
     // ---------------------------------------------------------------------------------------------------- //
@@ -36,9 +37,9 @@ const SeasonDisplay = (props) => {
   const { text, icon } = seasonConfig[season];
   return (
     <div className={`season-display ${season}`}>
-    <div className="icon-left">{icon}</div>
+    <span className="icon-left">{icon}</span>
       <h1>{text}</h1>
-    <div className="icon-right">{icon}</div>
+    <span className="icon-right">{icon}</span>
     </div>
   );
 };
